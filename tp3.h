@@ -1,6 +1,3 @@
-//#ifndef TP3_H_INCLUDED
-//#define TP3_H_INCLUDED
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -42,6 +39,12 @@ int inserer_milieu(t_ludotheque *ludo, t_jeu *j);
 
 void afficher_ludotheque(t_ludotheque *ludo);
 
+int retirer_jeu(t_ludotheque * ludo, char* nom);
+
+
+
+/*Fonctions esthétiques pour l'affichage*/
+
 int longueur_nom_max(t_ludotheque *ludo);
 
 void afficher_espaces(int x);
@@ -51,5 +54,3 @@ void afficher_genre(genre_jeu genre);
 int taille_genre(genre_jeu genre);
 
 void afficher_separateur(int x);
-
-//#endif // TP3_H_INCLUDED
