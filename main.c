@@ -21,6 +21,7 @@ int main()
     /*ajouter_jeu*/
 
     printf("%d  jeu1 ajoute\n", ajouter_jeu(ludo1,jeu1));
+<<<<<<< HEAD
     printf("%d  jeu2 ajoute\n", ajouter_jeu(ludo1,jeu2));
     printf("%d  jeu4 ajoute\n", ajouter_jeu(ludo1,jeu4));
     printf("%d  jeu3 ajoute\n", ajouter_jeu(ludo1,jeu3));
@@ -32,6 +33,20 @@ int main()
     /*retirer_jeu*/
     printf("%d jeu retiré\n",retirer_jeu(ludo1, "Carcassonne"));
     afficher_ludotheque(ludo1);
+=======
+    afficher_ludotheque(ludo1);
+    printf("%d  jeu2 ajoute\n", ajouter_jeu(ludo1,jeu2));
+    afficher_ludotheque(ludo1);
+    printf("%d  jeu4 ajoute\n", ajouter_jeu(ludo1,jeu4));
+    afficher_ludotheque(ludo1);
+    printf("%d  jeu3 ajoute\n", ajouter_jeu(ludo1,jeu3));
+    afficher_ludotheque(ludo1);
+    printf("%d  jeu5 ajoute\n", ajouter_jeu(ludo1,jeu5));
+    afficher_ludotheque(ludo1);
+
+    /*afficher_ludotheque*/
+
+>>>>>>> c1a1f4bd40b7abac56fc7b7566da1cd1027039ca
 
     return 0;
 }

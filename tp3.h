@@ -52,5 +52,12 @@ void afficher_espaces(int x);
 void afficher_genre(genre_jeu genre);
 
 int taille_genre(genre_jeu genre);
+<<<<<<< HEAD
 
 void afficher_separateur(int x);
+=======
+
+void afficher_separateur(int x);
+
+
+>>>>>>> c1a1f4bd40b7abac56fc7b7566da1cd1027039ca
