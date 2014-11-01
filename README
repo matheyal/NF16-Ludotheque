@@ -1,0 +1,5 @@
+--- TP3 NF16 ---
+
+Auteurs : Alexis MATHEY et Celestin VALLOIS (Université de Technologie de Compiègne)
+
+Ceci est un exercice de TP du cours de NF16. Nous devons incrémenter un système de gestion d'une ludothèque (visualistaion, ajout/suppression,...) avec un système de liste chainée où les éléments sont triés par ordre alphabétique.
