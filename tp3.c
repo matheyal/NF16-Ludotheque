@@ -195,3 +195,45 @@ int retirer_jeu(t_ludotheque * ludo, char* nom)
     return 1;
 
 }
+
+void supprimer_ludotheque(t_ludotheque *ludo)
+{
+    t_jeu *tmp, *j = ludo->debut;
+    while (j != NULL)
+    {
+        tmp = j;
+        j = j->suivant;
+        free(tmp);
+    }
+}
+
+t_ludotheque *requete_jeu(t_ludotheque *ludo, genre_jeu genre, int nbJoueurs, int duree)
+{
+    t_ludotheque *ludo2 = creer_ludotheque();
+    t_jeu *tmp = ludo->debut;
+    int good;
+
+    while (tmp != NULL)
+    {
+        good = 1;
+        if ((genre != -1) && (tmp->genre != genre))
+            good = 0;
+        if ((nbJoueurs != -1) && (nbJoueurs < tmp->nbJoueurMin || nbJoueurs > tmp->nbJoueurMax))
+            good = 0;
+        if ((duree != -1) && (duree < 0.9*tmp->duree || duree > 1.1*tmp->duree))
+            good = 0;
+
+        if (good == 1)
+        {
+            ajouter_jeu(ludo2, tmp);
+            printf("jeu ajoute\n");
+        }
+
+        tmp=tmp->suivant;
+    }
+
+    return ludo2;
+}
+
+
+

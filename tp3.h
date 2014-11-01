@@ -41,7 +41,9 @@ void afficher_ludotheque(t_ludotheque *ludo);
 
 int retirer_jeu(t_ludotheque * ludo, char* nom);
 
+void supprimer_ludotheque(t_ludotheque *ludo);
 
+t_ludotheque * requete_jeu(t_ludotheque *ludo, genre_jeu genre, int nbJoueurs, int duree);
 
 /*Fonctions esthétiques pour l'affichage*/
 
@@ -52,12 +54,6 @@ void afficher_espaces(int x);
 void afficher_genre(genre_jeu genre);
 
 int taille_genre(genre_jeu genre);
-<<<<<<< HEAD
-
-void afficher_separateur(int x);
-=======
 
 void afficher_separateur(int x);
 
-
->>>>>>> c1a1f4bd40b7abac56fc7b7566da1cd1027039ca

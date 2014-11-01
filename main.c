@@ -9,6 +9,7 @@ int main()
 
     ludo1 = creer_ludotheque();
 
+
     /*creer_jeu*/
 
     jeu1 = creer_jeu("Time's Up",AMBIANCE,4,8,35);
@@ -21,7 +22,6 @@ int main()
     /*ajouter_jeu*/
 
     printf("%d  jeu1 ajoute\n", ajouter_jeu(ludo1,jeu1));
-<<<<<<< HEAD
     printf("%d  jeu2 ajoute\n", ajouter_jeu(ludo1,jeu2));
     printf("%d  jeu4 ajoute\n", ajouter_jeu(ludo1,jeu4));
     printf("%d  jeu3 ajoute\n", ajouter_jeu(ludo1,jeu3));
@@ -31,22 +31,14 @@ int main()
     afficher_ludotheque(ludo1);
 
     /*retirer_jeu*/
-    printf("%d jeu retiré\n",retirer_jeu(ludo1, "Carcassonne"));
-    afficher_ludotheque(ludo1);
-=======
-    afficher_ludotheque(ludo1);
-    printf("%d  jeu2 ajoute\n", ajouter_jeu(ludo1,jeu2));
-    afficher_ludotheque(ludo1);
-    printf("%d  jeu4 ajoute\n", ajouter_jeu(ludo1,jeu4));
-    afficher_ludotheque(ludo1);
-    printf("%d  jeu3 ajoute\n", ajouter_jeu(ludo1,jeu3));
-    afficher_ludotheque(ludo1);
-    printf("%d  jeu5 ajoute\n", ajouter_jeu(ludo1,jeu5));
-    afficher_ludotheque(ludo1);
+    //printf("%d jeu retiré\n",retirer_jeu(ludo1, "Carcassonne"));
+    //afficher_ludotheque(ludo1);
 
-    /*afficher_ludotheque*/
+    /*requete_jeu*/
+    afficher_ludotheque(requete_jeu(ludo1,-1, 2, -1));
 
->>>>>>> c1a1f4bd40b7abac56fc7b7566da1cd1027039ca
+    /*supprimer_ludotheque*/
+    supprimer_ludotheque(ludo1);
 
     return 0;
 }
