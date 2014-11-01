@@ -22,11 +22,13 @@ t_jeu * creer_jeu( char * nom, genre_jeu genre, int nbJoueurMin, int nbJoueurMax
 int ajouter_jeu (t_ludotheque *ludo, t_jeu *j)
 {
     //Ludotheque vide
-    if (ludo->debut == NULL)
+    if ((ludo->debut == NULL) || (strcmp(j->nom, ludo->debut->nom) < 0))
     {
         inserer_debut(ludo, j);
         return 1;
     }
+    if (strcmp(j->nom, ludo->debut->nom) == 0)
+        return 0;
 
     //Ludotheque non vide
     if (inserer_milieu(ludo, j) == 1) //Le jeu a été inséré correctement
@@ -38,8 +40,9 @@ int ajouter_jeu (t_ludotheque *ludo, t_jeu *j)
 int inserer_debut(t_ludotheque *ludo, t_jeu *j)
 {
     ludo->nb_jeu++;
+    t_jeu *tmp = ludo->debut;
     ludo->debut = j;
-    j->suivant = NULL;
+    j->suivant = tmp;
     return 1;
 }
 
@@ -56,7 +59,7 @@ int inserer_milieu(t_ludotheque *ludo, t_jeu *j)
     //on verifie si le jeu est déjà dans la liste
     if ((tmp->suivant != NULL) && (tmp->suivant->nom == j->nom))
         return 0;
-    else
+    else //On insère à la bonne place
     {
         j->suivant = tmp->suivant;
         tmp->suivant = j;
@@ -94,7 +97,7 @@ void afficher_ludotheque(t_ludotheque *ludo)
         tmp=tmp->suivant;
     }
     afficher_separateur(lmax+50);
-    printf("TOTAL    %d", ludo->nb_jeu);
+    printf("TOTAL    %d\n", ludo->nb_jeu);
 }
 
 int longueur_nom_max(t_ludotheque *ludo) //Renvoie la longueur du nom le plus long de la ludothèque

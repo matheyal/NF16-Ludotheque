@@ -1,6 +1,3 @@
-//#ifndef TP3_H_INCLUDED
-//#define TP3_H_INCLUDED
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -52,4 +49,4 @@ int taille_genre(genre_jeu genre);
 
 void afficher_separateur(int x);
 
-//#endif // TP3_H_INCLUDED
+
