@@ -35,7 +35,7 @@ int main()
     //afficher_ludotheque(ludo1);
 
     /*requete_jeu*/
-    afficher_ludotheque(requete_jeu(ludo1,-1, 2, -1));
+    afficher_ludotheque(requete_jeu(ludo1,-1, 3, 60));
 
     /*supprimer_ludotheque*/
     supprimer_ludotheque(ludo1);

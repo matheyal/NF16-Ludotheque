@@ -225,7 +225,7 @@ t_ludotheque *requete_jeu(t_ludotheque *ludo, genre_jeu genre, int nbJoueurs, in
 
         if (good == 1)
         {
-            ajouter_jeu(ludo2, tmp);
+            ajouter_jeu(ludo2,creer_jeu(tmp->nom, tmp->genre, tmp->nbJoueurMin, tmp->nbJoueurMax, tmp->duree));
             printf("jeu ajoute\n");
         }
 
