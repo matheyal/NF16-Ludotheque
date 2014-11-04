@@ -2,13 +2,14 @@
 
 int main()
 {
-    t_ludotheque *ludo1;
-    t_jeu *jeu1, *jeu2, *jeu3, *jeu4, *jeu5;
+    t_ludotheque *ludo1, *ludo2, *ludo3;
+    t_jeu *jeu1, *jeu2, *jeu3, *jeu4, *jeu5, *jeu6;
 
     /*creer_ludotheque*/
 
     ludo1 = creer_ludotheque();
-
+    ludo2 = creer_ludotheque();
+    ludo3 = creer_ludotheque();
 
     /*creer_jeu*/
 
@@ -17,6 +18,7 @@ int main()
     jeu3 = creer_jeu("Les Aventuriers du rail",PLATEAU,2,6,60);
     jeu4 = creer_jeu("Carcassonne",PLATEAU,2,6,80);
     jeu5 = creer_jeu("Carcassonne",PLATEAU,2,6,80);
+    jeu6 = creer_jeu("Bluff Party",AMBIANCE,2,8,20);
     printf("Jeux crees\n\n");
 
     /*ajouter_jeu*/
@@ -35,10 +37,17 @@ int main()
     //afficher_ludotheque(ludo1);
 
     /*requete_jeu*/
-    afficher_ludotheque(requete_jeu(ludo1,-1, 3, 60));
+    ludo2 = requete_jeu(ludo1,-1, 3, 60);
+    ajouter_jeu(ludo2, jeu6);
+    //afficher_ludotheque(ludo2);
+
+    /*Fusion*/
+    ludo3 = fusion(ludo1, ludo2);
+    afficher_ludotheque(ludo3);
 
     /*supprimer_ludotheque*/
     supprimer_ludotheque(ludo1);
+    supprimer_ludotheque(ludo2);
 
     return 0;
 }

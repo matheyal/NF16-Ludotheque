@@ -5,7 +5,7 @@ t_ludotheque * creer_ludotheque()
     t_ludotheque *ludo = malloc(sizeof(t_ludotheque));
     ludo->nb_jeu = 0;
     ludo->debut = NULL;
-    return ludo; //Si l'allocation a échoué, ludo=NULL et donc la fonction retournera NULL
+    return ludo; //Si l'allocation a Ã©chouÃ©, ludo=NULL et donc la fonction retournera NULL
 }
 
 t_jeu * creer_jeu( char * nom, genre_jeu genre, int nbJoueurMin, int nbJoueurMax, int duree)
@@ -31,9 +31,9 @@ int ajouter_jeu (t_ludotheque *ludo, t_jeu *j)
         return 0;
 
     //Ludotheque non vide
-    if (inserer_milieu(ludo, j) == 1) //Le jeu a été inséré correctement
+    if (inserer_milieu(ludo, j) == 1) //Le jeu a Ã©tÃ© insÃ©rÃ© correctement
         return 1;
-    else //Le jeu était déjà dans la liste
+    else //Le jeu Ã©tait dÃ©jÃ  dans la liste
         return 0;
 }
 
@@ -50,16 +50,16 @@ int inserer_milieu(t_ludotheque *ludo, t_jeu *j)
 {
     t_jeu *tmp;
     tmp = ludo->debut;
-    //On parcourt la liste jusqu'à la fin ou jusqu'à ce que le nom du suivant soit plus grand (ou égal) alphabétiquement
+    //On parcourt la liste jusqu'Ã  la fin ou jusqu'Ã  ce que le nom du suivant soit plus grand (ou Ã©gal) alphabÃ©tiquement
     while ((tmp->suivant != NULL) && (strcmp(j->nom, tmp->suivant->nom) > 0))
     {
         tmp = tmp->suivant;
     }
 
-    //on verifie si le jeu est déjà dans la liste
+    //on verifie si le jeu est dÃ©jÃ  dans la liste
     if ((tmp->suivant != NULL) && (tmp->suivant->nom == j->nom))
         return 0;
-    else //On insère à la bonne place
+    else //On insÃ¨re Ã  la bonne place
     {
         j->suivant = tmp->suivant;
         tmp->suivant = j;
@@ -100,7 +100,7 @@ void afficher_ludotheque(t_ludotheque *ludo)
     printf("TOTAL    %d\n", ludo->nb_jeu);
 }
 
-int longueur_nom_max(t_ludotheque *ludo) //Renvoie la longueur du nom le plus long de la ludothèque
+int longueur_nom_max(t_ludotheque *ludo) //Renvoie la longueur du nom le plus long de la ludothÃ¨que
 {
     t_jeu * tmp = ludo->debut;
     int max = 0, l;
@@ -161,15 +161,15 @@ int retirer_jeu(t_ludotheque * ludo, char* nom)
     if (tmp == NULL) // Cas d'une liste vide
         return 0;
 
-    if (tmp->nom == nom) // Nom trouvé à la première case de la liste
+    if (tmp->nom == nom) // Nom trouvÃ© Ã  la premiÃ¨re case de la liste
     {
-        if (tmp->suivant == NULL) // Liste à un seul élément
+        if (tmp->suivant == NULL) // Liste Ã  un seul Ã©lÃ©ment
         {
             free(tmp);
             ludo->debut = NULL;
             ludo->nb_jeu--;
         }
-        else // Liste à plusieurs éléments
+        else // Liste Ã  plusieurs Ã©lÃ©ments
         {
             ludo->debut = tmp->suivant;
             free(tmp);
@@ -180,7 +180,7 @@ int retirer_jeu(t_ludotheque * ludo, char* nom)
         return 1;
     }
 
-    while ((tmp->suivant != NULL) && (tmp->suivant->nom != nom)) // On parcourt la liste jusqu'à ce qu'on rencontre le nom recherché ou jusqu'à la fin
+    while ((tmp->suivant != NULL) && (tmp->suivant->nom != nom)) // On parcourt la liste jusqu'Ã  ce qu'on rencontre le nom recherchÃ© ou jusqu'Ã  la fin
     {
         tmp = tmp->suivant;
     }
@@ -226,6 +226,7 @@ t_ludotheque *requete_jeu(t_ludotheque *ludo, genre_jeu genre, int nbJoueurs, in
         if (good == 1)
         {
             ajouter_jeu(ludo2,creer_jeu(tmp->nom, tmp->genre, tmp->nbJoueurMin, tmp->nbJoueurMax, tmp->duree));
+            ludo2->nb_jeu++;
             printf("jeu ajoute\n");
         }
 
@@ -235,5 +236,32 @@ t_ludotheque *requete_jeu(t_ludotheque *ludo, genre_jeu genre, int nbJoueurs, in
     return ludo2;
 }
 
+t_ludotheque * fusion(t_ludotheque * ludo1, t_ludotheque * ludo2)
+{
+    t_jeu *tmp1 = ludo1->debut;
+    t_jeu *tmp2 = ludo2->debut;
+    t_ludotheque * res = creer_ludotheque();
+    while (tmp1 != NULL || tmp2 != NULL)
+    {
+        if ((tmp2 == NULL) || (strcmp(tmp1->nom, tmp2->nom) < 0))
+        {
+            ajouter_jeu(res,creer_jeu(tmp1->nom, tmp1->genre, tmp1->nbJoueurMin, tmp1->nbJoueurMax, tmp1->duree));
+            tmp1 = tmp1 ->suivant;
+        }
+        else if ((tmp1 == NULL) || (strcmp(tmp1->nom, tmp2->nom) > 0))
+        {
+            ajouter_jeu(res,creer_jeu(tmp2->nom, tmp2->genre, tmp2->nbJoueurMin, tmp2->nbJoueurMax, tmp2->duree));
+            tmp2 = tmp2->suivant;
+        }
+        else if ((tmp2 != NULL) && (tmp1 != NULL))
+        {
+            ajouter_jeu(res,creer_jeu(tmp1->nom, tmp1->genre, tmp1->nbJoueurMin, tmp1->nbJoueurMax, tmp1->duree));
+            tmp1 = tmp1 ->suivant;
+            tmp2 = tmp2 ->suivant;
+        }
 
+    }
+
+    return res;
+}
 

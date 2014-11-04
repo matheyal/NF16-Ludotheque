@@ -45,6 +45,8 @@ void supprimer_ludotheque(t_ludotheque *ludo);
 
 t_ludotheque * requete_jeu(t_ludotheque *ludo, genre_jeu genre, int nbJoueurs, int duree);
 
+t_ludotheque * fusion(t_ludotheque * ludo1, t_ludotheque * ludo2);
+
 /*Fonctions esthétiques pour l'affichage*/
 
 int longueur_nom_max(t_ludotheque *ludo);
