@@ -1,0 +1,11 @@
+--- TP3 NF16 ---
+
+Authors : Alexis MATHEY et Celestin VALLOIS (Université de Technologie de Compiègne)
+
+--- 
+
+Here is a practical exercise of the courses NF16. We have to increment a toy library manger (display, add/delete, merge,...) using linked lists in which the elements are ordered alphabetcally.
+
+Ceci est un exercice de TP du cours de NF16. Nous devons incrémenter un système de gestion d'une ludothèque (visualistaion, ajout/suppression,...) avec un système de liste chainée où les éléments sont triés par ordre alphabétique.
+
+---
